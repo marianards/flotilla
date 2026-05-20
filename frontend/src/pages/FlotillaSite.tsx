@@ -11,7 +11,6 @@ import { AreaOverviewPage } from './AreaOverviewPage'
 import { PredefinedMissionsPage } from './PredefinedMissionsPage'
 import { MissionHistoryPage } from './MissionHistoryPage'
 import { AutoSchedulePage } from './AutoSchedulePage'
-import { RobotStatusPage } from './RobotStatusPage'
 import { Outlet, useParams } from 'react-router-dom'
 import { CircularProgress } from '@equinor/eds-core-react'
 import { Typography } from '@equinor/eds-core-react'
@@ -48,7 +47,6 @@ export const FlotillaSite = () => {
                         <Route path="predefined-missions" element={<PredefinedMissionsPage />} />
                         <Route path="history" element={<MissionHistoryPage />} />
                         <Route path="auto-schedule" element={<AutoSchedulePage />} />
-                        <Route path="robots" element={<RobotStatusPage />} />
                         <Route path="statistics" element={<StatisticsPage />} />
                         <Route path="data-view" element={<DataViewPage />} />
                         <Route path="cloe-view" element={<CloeDataViewPage />} />
