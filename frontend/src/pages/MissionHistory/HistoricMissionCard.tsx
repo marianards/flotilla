@@ -1,4 +1,6 @@
 import { Table, Typography } from '@equinor/eds-core-react'
+import { tokens } from '@equinor/eds-tokens'
+import styled from 'styled-components'
 import { Mission } from 'models/Mission'
 import {
     MissionStatusDisplay,
@@ -20,6 +22,13 @@ enum InspectionTableColumns {
     CompletionTime = 'CompletionTime',
     Rerun = 'RerunMission',
 }
+
+const StyledRow = styled(Table.Row)`
+    transition: background-color 0.12s ease;
+    &&:hover {
+        background-color: ${tokens.colors.ui.background__light.hex};
+    }
+`
 
 interface MissionProps {
     mission: Mission
@@ -46,7 +55,7 @@ export const HistoricMissionCard = ({ mission }: MissionProps) => {
     )
 
     return (
-        <Table.Row key={mission.id}>
+        <StyledRow key={mission.id}>
             <Table.Cell id={InspectionTableColumns.StatusShort}>
                 <MissionStatusDisplayShort status={mission.status} />
             </Table.Cell>
@@ -67,7 +76,7 @@ export const HistoricMissionCard = ({ mission }: MissionProps) => {
             <Table.Cell id={InspectionTableColumns.Rerun}>
                 <MissionRestartButton mission={mission} hasFailedTasks={missionHasFailedTasks} smallButton={true} />
             </Table.Cell>
-        </Table.Row>
+        </StyledRow>
     )
 }
 
@@ -76,7 +85,7 @@ export const SimpleHistoricMissionCard = ({ mission }: MissionProps) => {
     const { installation } = useContext(InstallationContext)
 
     return (
-        <Table.Row key={mission.id}>
+        <StyledRow key={mission.id}>
             <Table.Cell id={InspectionTableColumns.Status}>
                 <MissionStatusDisplay status={mission.status} />
             </Table.Cell>
@@ -91,6 +100,6 @@ export const SimpleHistoricMissionCard = ({ mission }: MissionProps) => {
             <Table.Cell id={InspectionTableColumns.CompletionTime}>
                 <MissionEndTimeDisplay mission={mission} />
             </Table.Cell>
-        </Table.Row>
+        </StyledRow>
     )
 }
